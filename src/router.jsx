@@ -95,7 +95,6 @@ export const router = createBrowserRouter([
         ],
       },
       { path: 'signup/last', element: <LastSignUpPage /> },
-      { path: 'signup/last', element: <LastSignUpPage /> },
       { path: 'signup/pro', element: <ProSignUpPage /> },
     ],
   },
