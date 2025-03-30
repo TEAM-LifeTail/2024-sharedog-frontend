@@ -42,6 +42,7 @@ import { MyWrite } from '@pages/myPage/MyWrite';
 import { BloodRule } from '@pages/mainPage/BloodRule';
 import { BloodCaution } from '@pages/mainPage/BloodCaution';
 import { BloodBenefit } from '@pages/mainPage/BloodBenefit';
+import { CommunityPolicy } from '@pages/communityPage/CommunityPolicy';
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -89,11 +90,11 @@ export const router = createBrowserRouter([
               { path: 'gen', element: <GenSignUpPage /> },
               { path: 'op', element: <OpSignUpPage /> },
               { path: 'blood', element: <BloodSignUpPage /> },
-
             ],
           },
         ],
       },
+      { path: 'signup/last', element: <LastSignUpPage /> },
       { path: 'signup/last', element: <LastSignUpPage /> },
       { path: 'signup/pro', element: <ProSignUpPage /> },
     ],
@@ -107,6 +108,7 @@ export const router = createBrowserRouter([
       { path: 'search', element: <CommunitySearch /> },
       { path: 'write', element: <CommunityWrite /> },
       { path: ':id', element: <CommunityDetail /> },
+      { path: 'policy', element: <CommunityPolicy /> },
     ],
   },
   {
