@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Logo from '@assets/images/defaultDogImg.png';
+
 const ChatRoom = ({ room, onClick }) => {
   return (
     <ChatRoomWrapper onClick={onClick}>
@@ -15,6 +16,9 @@ const ChatRoom = ({ room, onClick }) => {
           </ChatNameDate>
           <ChatBody>
             {room.latest_message || '최근 메시지가 없습니다.'}
+            {room.unread_messages > 0 && (
+              <Unread>{room.unread_messages}</Unread>
+            )}
           </ChatBody>
         </TextContainer>
       </ChatContent>
@@ -23,6 +27,9 @@ const ChatRoom = ({ room, onClick }) => {
 };
 
 export default ChatRoom;
+
+// ==================== Styled Components ====================
+
 const ChatRoomWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -37,14 +44,13 @@ const ChatContent = styled.div`
   width: 100%;
   gap: 17px;
   display: flex;
-
   align-items: center;
 `;
+
 const ChatProfile = styled.img`
   display: flex;
   width: 45px;
   height: 45px;
-
   border-radius: 45px;
   background-color: #ffffff;
   object-fit: cover; /* 이미지 비율 유지하면서 채우기 */
@@ -58,23 +64,29 @@ const TextContainer = styled.div`
   flex-direction: column;
   gap: 8px;
 `;
+
 const ChatNameDate = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
 `;
+
 const Name = styled.div`
   color: ${({ theme }) => theme.colors.text};
   font-size: 0.875rem;
   font-family: ${({ theme }) => theme.fonts.SUITBold['font-family']};
 `;
+
 const Date = styled.div`
   color: #9c9ca1;
   font-size: 0.75rem;
   font-family: ${({ theme }) =>
     theme.fonts.SUITMedium['font-family']};
 `;
+
 const ChatBody = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   color: #9c9ca1;
   font-size: 0.75rem;
@@ -84,4 +96,22 @@ const ChatBody = styled.div`
   white-space: nowrap; /* 한 줄로 유지 */
   overflow: hidden; /* 넘치는 내용 숨김 */
   text-overflow: ellipsis; /* 말줄임표(...) 적용 */
+`;
+
+const Unread = styled.div`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-family: ${({ theme }) =>
+    theme.fonts.SUITMedium['font-family']};
+  background-color: ${({ theme }) => theme.colors.mainColor};
+  height: 15px;
+  min-width: 15px;
+  padding: 0 3px; /* 좌우 여백으로 자연스럽게 너비 증가 */
+  box-sizing: border-box;
+  border-radius: 999px; /* pill 형태 유지 */
+  line-height: 1;
 `;
